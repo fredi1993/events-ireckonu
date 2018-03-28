@@ -1,0 +1,115 @@
+page-event-details {
+    ion-content {
+        background-color: #f5f5f5 !important;
+    }
+    .scroll-content {
+        padding-top: 0px !important;
+    }
+    ion-header ion-icon.back-button-icon.icon {
+        color: #fff;
+    }
+    .event-name {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 24px;
+        letter-spacing: -0.3px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 10px;
+    }
+    .event {
+        font-size: 12px;
+        margin: 0px;
+    }
+    .event-details .col {
+        padding: 5px 0px !important;
+    }
+    .event-creator {
+        color: #afafaf;
+        padding-left: 16px;
+    }
+    .black {
+        color: #000;
+    }
+    .event-attendees {
+        font-weight: bold;
+    }
+    .member-images {
+        width: 50px !important;
+        height: 50px !important;
+        border: 5px solid #fff !important;
+        background-color: #fff;
+        border-radius: 50%;
+        overflow: hidden;
+        object-fit: cover;
+    }
+    .move-left {
+        margin-left: -5%; // position: relative;
+        // left: -5%;
+    }
+    .remaining-attendees-container {
+        float: right;
+        z-index: 2;
+    }
+    .remaining-attendees {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        background-color: $ireckonu;
+        font-size: 15px;
+    }
+    .bold {
+        font-weight: bold;
+    }
+    .white-background {
+        background-color: #fff;
+    }
+    .grey-background {
+        background-color: #f5f5f5;
+    }
+    .grid .row {
+        background-color: #fff;
+    }
+    .item-md.item-block .item-inner {
+        border-bottom: 0px;
+    }
+    .post-details img {
+        border-radius: 0%;
+        object-fit: cover;
+    }
+    .social-card {
+        box-shadow: none;
+    }
+    ion-icon {
+        padding-right: 0.4em;
+    }
+    .social-buttons ion-col {
+        text-align: center;
+    }
+    .high-five {
+        background: #02d19d;
+        ;
+        border-radius: 50%;
+        height: 25px;
+        width: 25px;
+        text-align: center;
+        color: white;
+        line-height: 1.4;
+        margin-right: 5px;
+        padding-left: 5px;
+        font-size: 1.3em;
+    }
+    .comment {
+        background: #0974f6;
+        border-radius: 50%;
+        height: 25px;
+        width: 25px;
+        text-align: center;
+        color: white;
+        line-height: 1.6;
+        margin-right: 5px;
+        padding-left: 5px;
+        font-size: 1.2em;
+    }
+}

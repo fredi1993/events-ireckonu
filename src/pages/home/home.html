@@ -1,0 +1,77 @@
+<ion-header no-border>
+  <ion-navbar>
+    <ion-title text-center>
+      Events
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-padding #container>
+  <!-- Loading spinner -->
+  <spinner-component [spinnerShow]="showLoader"></spinner-component>
+
+
+  <ion-grid no-padding>
+
+    <!-- Searchbar  -->
+    <ion-row padding-horizontal class="search-bar-container">
+      <ion-col col-12>
+        <ion-searchbar no-border class="search-bar" (ionInput)="triggerLazyLoad()" [(ngModel)]="eventFilter.title" placeholder="Search events">
+        </ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <!-- All events -->
+    <ion-row no-padding class="events-container">
+      <ion-col col-12>
+        <!-- Group name loop -->
+        <ion-item-group *ngFor="let group of groupedEvents">
+
+          <ion-item-divider class="date-group" light> {{group.groupName}} </ion-item-divider>
+
+          <h6 *ngIf="(group.events | filterBy: eventFilter).length === 0" padding-left>No events</h6>
+          <!-- event loop -->
+          <ion-item class="event-details" *ngFor="let event of group.events | filterBy: eventFilter; let i = index; let length = count "
+            [class.active]="event.id == selectedEvent">
+
+            <!-- event image -->
+            <ion-avatar item-start class="event-image-container" (click)="openDetails(event)">
+              <div class="event-image" [defaultImage]="'https://cdn.dribbble.com/users/24447/screenshots/1201310/inkling_spinner.gif'"
+                [lazyLoad]="event.image" [scrollObservable]="scrollAndSearch$">{{event.dateDisplay}}</div>
+            </ion-avatar>
+
+            <h2 class="event-name" (click)="openDetails(event)">{{event.title}}</h2>
+            <h3 class="event-dateTime">{{event.dateTime}}</h3>
+
+            <!-- attendees image -->
+            <ion-row>
+              <span *ngFor="let image of event.members; let in = index; let length = count;let first = first;" [ngClass]="{'move-left': in==1 || in==2}">
+                <ion-avatar *ngIf="in<3">
+                  <img class="event-attendees" [defaultImage]="'https://cdn.dribbble.com/users/24447/screenshots/1201310/inkling_spinner.gif'"
+                    [lazyLoad]="image.photo" [scrollObservable]="scrollAndSearch$">
+                </ion-avatar>
+              </span>
+              <h2 class="other-attendees" *ngIf="event.members?.length >=3">+{{event.members?.length-3}} others</h2>
+            </ion-row>
+
+            <!-- decision section -->
+            <ion-row>
+              <button *ngIf="event.status == 'going' || event.status == 'none'" class="attendees-btn " [ngClass]="{'going': event.status == 'going' && event.status != 'none'}"
+                ion-button icon-right color="light" small no-border (click)="setDecision('going',event.id)">
+                <ion-icon name="checkmark"> </ion-icon>
+                <span class="btn-text">Going</span>
+              </button>
+              <button *ngIf="event.status == 'ignore' || event.status == 'none'" class="attendees-btn " [ngClass]="{'ignore': event.status == 'ignore' && event.status != 'none'}"
+                ion-button icon-right color="light" small (click)="setDecision('ignore',event.id)">
+                <ion-icon name="close"> </ion-icon>
+                <span class="btn-text">Ignored</span>
+              </button>
+            </ion-row>
+
+          </ion-item>
+
+        </ion-item-group>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

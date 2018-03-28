@@ -1,0 +1,176 @@
+<ion-header no-border>
+
+  <ion-navbar transparent>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content fullscreen no-padding #container>
+
+  <ion-grid no-padding class="grey-background">
+
+    <!-- event main image -->
+    <ion-row>
+      <ion-col col-12>
+        <img class="event-image" [defaultImage]="'https://cdn.dribbble.com/users/24447/screenshots/1201310/inkling_spinner.gif'"
+          [lazyLoad]="event.image" [scrollObservable]="container.ionScroll">
+      </ion-col>
+    </ion-row>
+
+    <!-- event title & creators -->
+    <ion-row>
+      <ion-col col-12>
+        <h1 class="event-name">{{event.title}}</h1>
+      </ion-col>
+      <ion-col col-12>
+        <p class="event event-creator">Public event &nbsp;&nbsp;&nbsp; Hosted by TSh Amsterdam City</p>
+      </ion-col>
+    </ion-row>
+
+    <!-- event details -->
+    <ion-row padding class="event-details">
+      <ion-col col-1>
+        <ion-icon name="md-time"></ion-icon>
+      </ion-col>
+      <ion-col col-11>
+        <p class="event event-date" color="dark">{{event.dateTime}}</p>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon name="md-pin"></ion-icon>
+      </ion-col>
+      <ion-col col-11>
+        <p class="event event-location" color="dark">{{event.description}}</p>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon name="md-speedometer"></ion-icon>
+      </ion-col>
+      <ion-col col-11>
+        <p class="event event-attendees" color="dark">{{event.members.length}} going</p>
+      </ion-col>
+    </ion-row>
+
+    <!-- event attendees -->
+    <div padding-left class="white-background">
+      <span *ngFor="let image of event.members; let in = index; let length = count;let first = first;" [ngClass]="{'move-left':!first}">
+        <span *ngIf="in<7">
+          <img class="member-images" [defaultImage]="'https://cdn.dribbble.com/users/24447/screenshots/1201310/inkling_spinner.gif'"
+            [lazyLoad]="image.photo" [scrollObservable]="container.ionScroll">
+        </span>
+      </span>
+      <span class="remaining-attendees-container" padding-right>
+        <span *ngIf="event.members?.length >=7" class="member-images remaining-attendees">+{{event.members?.length-7}}</span>
+      </span>
+    </div>
+
+    <!-- event description -->
+    <ion-row>
+      <ion-col col-12>
+        <p padding class="event">In 1.5 hour we will explore Amsterdam on our bicycles, we'll show beautiful canala, hidden gems, and...
+          <span class="bold">Show more
+            <ion-icon name="ios-arrow-down"></ion-icon>
+          </span>
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <!-- event message -->
+    <ion-row margin-vertical>
+      <ion-col col-12>
+        <ion-item no-padding>
+          <ion-input type="text" placeholder="Leave a message"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <!-- event social posts -->
+    <ion-row margin-vertical>
+      <ion-col col-12>
+        <ion-card class="social-card">
+
+          <ion-item>
+            <ion-avatar item-start class="post-details">
+              <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i8W2rlxCOL0g/v0/400x-1.jpg">
+            </ion-avatar>
+            <h2>
+              <b>Lucifen van Geffen</b> shared a link</h2>
+            <p>
+              <ion-icon name="md-time"></ion-icon>
+              <span> 14 min ago</span>
+            </p>
+          </ion-item>
+
+          <ion-card-content>
+            <p>How to ride a bike like a real Dutchie!</p>
+          </ion-card-content>
+
+          <img src="http://www.youth.gov.hk/html/www/tc/cover-photo/music/music-specific/concert05.jpg">
+
+          <button ion-button icon-left clear small color="comment" round>
+            <ion-icon class="high-five" name="hand"></ion-icon>
+            <div>14</div>
+          </button>
+
+          <ion-row class="social-buttons">
+            <ion-col>
+              <button ion-button icon-left clear small color="comment">
+                <ion-icon name="hand"></ion-icon>
+                <div>High five</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-right clear small color="comment">
+                <ion-icon name="text"></ion-icon>
+                <div> Comment</div>
+              </button>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row margin-vertical>
+      <ion-col col-12>
+        <ion-card class="social-card">
+
+          <ion-item>
+            <ion-avatar item-start class="post-details">
+              <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i8W2rlxCOL0g/v0/400x-1.jpg">
+            </ion-avatar>
+            <h2>
+              <b>Bruno Dagestino</b>
+            </h2>
+            <p>
+              <ion-icon name="md-time"></ion-icon> 23 min ago</p>
+          </ion-item>
+
+          <ion-card-content>
+            <p>Is it possible to leave after an hour? I would love to join, but I have another appointment later that evening..</p>
+          </ion-card-content>
+
+          <button ion-button icon-left clear small color="comment" round>
+            <ion-icon class="comment" name="text"></ion-icon>
+            <div>1</div>
+          </button>
+
+          <ion-row class="social-buttons">
+            <ion-col>
+              <button ion-button icon-left clear small color="comment">
+                <ion-icon name="hand"></ion-icon>
+                <div>High five</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-right clear small color="comment">
+                <ion-icon name="text"></ion-icon>
+                <div> Comment</div>
+              </button>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
