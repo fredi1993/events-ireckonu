@@ -1,5 +1,6 @@
 # events-ireckonu
-A simple client-side app that lists events and shows details for every event
+A simple client-side app that lists events and shows details for every event.
+
 Download or clone the repo and run `npm install`.
 
 ## Development server
